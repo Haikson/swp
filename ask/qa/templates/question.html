@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Question: {{ question.title }}.{% endblock title %}
+
+{% block content %}
+    <h1>{{ question.title }}</h1>
+    <section>
+        {{ question.text|safe }}    
+    </section>
+
+    {% for answer in question.answer_set.all %}
+        <section>
+            {{ answer.text|safe }}
+        </section>
+    {% endfor %}
+
+{% endblock content %}

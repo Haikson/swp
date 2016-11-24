@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block title %}Most popular questions.{% endblock title %}
+
+{% block content %}
+    {% for question in questions %}
+        <p><a href="{% url 'question' question.pk %}">{{ question.title }}</a></p>
+    {% endfor %}
+{% endblock content %}
