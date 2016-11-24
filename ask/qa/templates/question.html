@@ -9,9 +9,17 @@
     </section>
 
     {% for answer in question.answer_set.all %}
-        <section>
-            {{ answer.text|safe }}
+        <section style="margin: 20px; border: 1px #ebebeb solid;padding: 5px 10px;">
+            {{ answer.text }}
         </section>
     {% endfor %}
+
+    <section>
+        <form action="{% url 'question' question.pk %}" method="POST" accept-charset="utf-8">
+            {% csrf_token %}
+            {{ answer_form.as_p }}
+            <input type="submit" value="save">
+        </form>
+    </section>
 
 {% endblock content %}
