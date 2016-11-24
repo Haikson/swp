@@ -15,6 +15,7 @@
     {% endfor %}
 
     <section>
+        <p>{% if user.is_authenticated %}{{ user.username }}{% else %}Not authenticated user{% endif %}</p>
         <form action="{% url 'question' question.pk %}" method="POST" accept-charset="utf-8">
             {% csrf_token %}
             {{ answer_form.as_p }}
